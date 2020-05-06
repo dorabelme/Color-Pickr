@@ -1,12 +1,15 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from "react";
+import Palette from "./Palette";
+import seedColors from "./seedColors";
 
-function App() {
-  return (
-    <div className="App">
-
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Palette {...seedColors[2]} />
+      </div>
+    );
+  }
 }
 
 export default App;
