@@ -73,9 +73,15 @@ const styles = theme => ({
 });
 
 class NewPaletteForm extends Component {
-    state = {
-        open: false
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            open: true,
+            currentColor: "teal",
+            colors: ["purple", "#e15764"]
+        }
+    }
+
 
     handleDrawerOpen = () => {
         this.setState({ open: true });
@@ -84,6 +90,16 @@ class NewPaletteForm extends Component {
     handleDrawerClose = () => {
         this.setState({ open: false });
     };
+
+    updateCurrentColor = (newColor) => {
+        this.setState({ currentColor: newColor.hex })
+    };
+
+    addNewColor = () => {
+        this.setState({ colors: [...this.state.colors, this.state.currentColor] })
+    };
+
+
 
     render() {
         const { classes } = this.props;
@@ -134,9 +150,14 @@ class NewPaletteForm extends Component {
                     </div>
 
                     <ChromePicker
-                        color="purple"
-                        onChangeComplete={newColor => console.log(newColor)} />
-                    <Button variant="contained" color="primary">Add Color</Button>
+                        color={this.state.currentColor}
+                        onChangeComplete={this.updateCurrentColor} />
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        style={{ backgroundColor: this.state.currentColor }}
+                        onClick={this.addNewColor}
+                    >Add Color</Button>
 
                 </Drawer>
                 <main
@@ -145,6 +166,11 @@ class NewPaletteForm extends Component {
                     })}
                 >
                     <div className={classes.drawerHeader} />
+                    <ul>
+                        {this.state.colors.map(color => (
+                            <li style={{ backgroundColor: color }}>{color}</li>
+                        ))}
+                    </ul>
 
                 </main>
             </div>
