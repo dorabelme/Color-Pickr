@@ -1,4 +1,4 @@
-import chroma from 'chroma-js';
+import chroma from "chroma-js";
 const levels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 
 function generatePalette(starterPalette) {
@@ -6,7 +6,7 @@ function generatePalette(starterPalette) {
         paletteName: starterPalette.paletteName,
         id: starterPalette.id,
         emoji: starterPalette.emoji,
-        colors: {}
+        colors: {},
     };
 
     for (let level of levels) {
@@ -21,8 +21,11 @@ function generatePalette(starterPalette) {
                 id: color.name.toLowerCase().replace(/ /g, "-"),
                 hex: scale[i],
                 rgb: chroma(scale[i]).css(),
-                rgba: chroma(scale[i]).css().replace("rgb", "rgba").replace(")", ",1.0)")
-            })
+                rgba: chroma(scale[i])
+                    .css()
+                    .replace("rgb", "rgba")
+                    .replace(")", ",1.0)"),
+            });
         }
     }
     return newPalette;
@@ -30,20 +33,11 @@ function generatePalette(starterPalette) {
 
 function getRange(hexColor) {
     const end = "#fff";
-    return [
-        chroma(hexColor)
-            .darken(1.4)
-            .hex(),
-        hexColor,
-        end
-    ];
+    return [chroma(hexColor).darken(1.4).hex(), hexColor, end];
 }
 
 function getScale(hexColors, numberOfColors) {
-    return chroma
-        .scale(getRange(hexColors))
-        .mode("lab")
-        .colors(numberOfColors);
+    return chroma.scale(getRange(hexColors)).mode("lab").colors(numberOfColors);
 }
 
 export { generatePalette };

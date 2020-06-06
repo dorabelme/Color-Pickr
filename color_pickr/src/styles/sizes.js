@@ -9,5 +9,5 @@ export default {
             xl: "1600px",
         };
         return `@media (max-width: ${sizes[size]})`;
-    }
+    },
 };

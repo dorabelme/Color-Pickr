@@ -4,13 +4,12 @@ import bg from "./bg.svg";
 export default {
     "@global": {
         ".fade-exit": {
-            opacity: 1
+            opacity: 1,
         },
         ".fade-exit-active": {
             opacity: 0,
-            transition: "opacity 0.5s ease-out"
+            transition: "opacity 0.5s ease-out",
         },
-
     },
     root: {
         /*background by SVGBackgrounds.com */
@@ -20,7 +19,7 @@ export default {
         display: "flex",
         alignItems: "flex-start",
         justifyContent: "center",
-        overflow: "scroll"
+        overflow: "scroll",
     },
     container: {
         width: "50%",
@@ -41,7 +40,6 @@ export default {
     heading: {
         color: "black",
         fontSize: "2rem",
-
     },
 
     nav: {
@@ -51,9 +49,8 @@ export default {
         alignItems: "center",
         color: "white",
         "& a": {
-            color: "white"
-        }
-
+            color: "white",
+        },
     },
     palettes: {
         boxSizing: "border-box",
@@ -68,5 +65,5 @@ export default {
             gridTemplateColumns: "repeat(1, 100%)",
             gridGap: "1.4rem",
         },
-    }
+    },
 };
